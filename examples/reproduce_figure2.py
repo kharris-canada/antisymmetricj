@@ -29,6 +29,7 @@ FIGURE2A_CASES: tuple[tuple[str, float, float], ...] = (
 )
 
 SOLID_COLORS = ("#0072B2", "#D55E00", "#009E73")
+FIGURE_XLIM = (-1.5, 1.5)
 
 
 def main(
@@ -72,6 +73,7 @@ def main(
         title="Figure 2(a) reproduction",
         colors=SOLID_COLORS,
         linestyles=("-", "-", "-"),
+        xlim=FIGURE_XLIM,
     )
 
     figure2b_values = f_zy(
@@ -109,6 +111,7 @@ def main(
         title="Figure 2(b) reproduction",
         colors=(SOLID_COLORS[0],),
         linestyles=("-",),
+        xlim=FIGURE_XLIM,
     )
 
 
