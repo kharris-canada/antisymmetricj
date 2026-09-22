@@ -1,0 +1,86 @@
+[project]
+name = "antisymmetricj"
+version = "0.1.0"
+description = "Simulate antisymmetric J-coupling f_zy powder distributions for AB spin systems in solids"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    {name = "Kris Harris", email = "kris.j.harris@gmail.com"},
+]
+keywords = ["NMR", "solid-state NMR", "antisymmetric J coupling", "powder averaging"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = [
+    "numpy>=1.23",
+    "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.0",
+    "build>=1.0",
+    "isort>=5.12",
+    "mypy>=1.6",
+    "pytest>=7.0",
+    "ruff>=0.4",
+]
+
+[project.scripts]
+antisymmetricj = "antisymmetricj.cli:main"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "B",
+    "UP",
+]
+ignore = [
+    "E501",
+]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+check_untyped_defs = true
+packages = ["antisymmetricj"]

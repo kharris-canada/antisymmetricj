@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated paper."
+title: "AntisymmetricJ"
+authors:
+  - family-names: "Harris"
+    given-names: "Kris"
+license: "MIT"
+version: "0.1.0"
+date-released: "2026-08-01"
+preferred-citation:
+  type: article
+  title: "NMR line shapes from AB spin systems in solids: the role of antisymmetric J coupling"
+  authors:
+    - family-names: "Harris"
+      given-names: "Robin K."
+    - family-names: "Bryce"
+      given-names: "David L."
+    - family-names: "Wasylishen"
+      given-names: "Roderick E."
+  journal: "Canadian Journal of Chemistry"
+  volume: 87
+  issue: 10
+  year: 2009
+  start: 1338
+  end: 1351
+  doi: "10.1139/V09-089"
