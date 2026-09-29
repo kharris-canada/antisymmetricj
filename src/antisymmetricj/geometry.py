@@ -2,32 +2,12 @@
 
 from __future__ import annotations
 
-from typing import cast, overload
+from typing import cast
 
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
 
 SQRT_3 = float(np.sqrt(3.0))
-
-
-@overload
-def f_zy(
-    alpha: float,
-    beta: float,
-    *,
-    c_yx: float = 1.0,
-    c_zx: float = 1.0,
-) -> float: ...
-
-
-@overload
-def f_zy(
-    alpha: ArrayLike,
-    beta: ArrayLike,
-    *,
-    c_yx: float = 1.0,
-    c_zx: float = 1.0,
-) -> NDArray[np.float64]: ...
 
 
 def f_zy(
@@ -118,7 +98,7 @@ def _prime_projection(vectors: NDArray[np.float64]) -> NDArray[np.float64]:
 
 
 def _dot(left: NDArray[np.float64], right: NDArray[np.float64]) -> NDArray[np.float64]:
-    return np.sum(left * right, axis=-1)
+    return cast("NDArray[np.float64]", np.sum(left * right, axis=-1))
 
 
 def simplified_f_zy(

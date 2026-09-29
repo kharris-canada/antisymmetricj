@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+from typing import cast
 
 import numpy as np
 from numpy.typing import NDArray
@@ -123,11 +124,11 @@ def load_orientations(
     alpha = data[:, 0]
     beta = data[:, 1]
     if data.shape[1] == 2:
-        weights = np.ones(len(data), dtype=float)
+        weights = cast("NDArray[np.float64]", np.ones(len(data), dtype=float))
     elif data.shape[1] == 3:
-        weights = data[:, 2]
+        weights = cast("NDArray[np.float64]", data[:, 2])
     else:
-        weights = data[:, 3]
+        weights = cast("NDArray[np.float64]", data[:, 3])
 
     if unit == "degrees":
         alpha = np.deg2rad(alpha)
