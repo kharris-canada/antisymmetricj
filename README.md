@@ -58,6 +58,8 @@ antisymmetricj calc_spectrum spectrum_outfile.txt \
   --sigma-s-hz 10 \
   --j-iso-hz 50 \
   --j-zy-anti-hz 100 \
+  --c-yx 1 \
+  --c-zx 1 \
   --fwhm-hz 1.0 \
   --plot_spectrum spectrum.jpg
 ```
