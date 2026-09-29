@@ -88,6 +88,10 @@ After running the example, the generated images are:
 
 ![Figure 2(b)](examples/output/figure2b.jpg)
 
+The spectrum example above generates:
+
+![Example AB spectrum](examples/output/spectrum.jpg)
+
 ## Development
 
 ```bash
