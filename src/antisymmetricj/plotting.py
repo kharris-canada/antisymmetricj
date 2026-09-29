@@ -23,6 +23,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from antisymmetricj.distribution import Distribution
+from antisymmetricj.spectrum import Spectrum
 
 FZY_PLOT_XLIM = (-1.5, 1.5)
 
@@ -83,6 +84,28 @@ def write_fzy_overlay_distribution_table(
     np.savetxt(file_path, data, fmt="%.17g", header=header)
 
 
+def write_spectrum_table(
+    path: str | Path,
+    spectrum: Spectrum,
+    *,
+    metadata: Sequence[str],
+) -> None:
+    """Write one NMR spectrum table with metadata comments."""
+
+    file_path = Path(path)
+    file_path.parent.mkdir(parents=True, exist_ok=True)
+    header = "\n".join([*metadata, "bin_left bin_center bin_right intensity"])
+    data = np.column_stack(
+        (
+            spectrum.left,
+            spectrum.center,
+            spectrum.right,
+            spectrum.intensity,
+        )
+    )
+    np.savetxt(file_path, data, fmt="%.17g", header=header)
+
+
 def plot_fzy_overlay(
     path: str | Path,
     distributions: Sequence[Distribution],
@@ -119,6 +142,40 @@ def plot_fzy_overlay(
     if title is not None:
         ax.set_title(title)
     ax.legend(frameon=False)
+    ax.grid(True, alpha=0.25, linewidth=0.6)
+    fig.tight_layout()
+    fig.savefig(file_path, dpi=300, facecolor="white")
+    plt.close(fig)
+
+
+def plot_spectrum(
+    path: str | Path,
+    spectrum: Spectrum,
+    *,
+    xlabel: str = "frequency / Hz",
+    ylabel: str = "raw relative intensity",
+    title: str | None = None,
+    color: str = "#0072B2",
+    linewidth: float = 0.8,
+) -> None:
+    """Write a Gaussian-broadened NMR spectrum plot as a 300-dpi JPEG."""
+
+    file_path = Path(path)
+    file_path.parent.mkdir(parents=True, exist_ok=True)
+
+    fig, ax = plt.subplots(figsize=(7.0, 4.5))
+    ax.plot(
+        spectrum.center,
+        spectrum.intensity,
+        color=color,
+        linestyle="-",
+        linewidth=linewidth,
+    )
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.set_xlim((float(spectrum.left[0]), float(spectrum.right[-1])))
+    if title is not None:
+        ax.set_title(title)
     ax.grid(True, alpha=0.25, linewidth=0.6)
     fig.tight_layout()
     fig.savefig(file_path, dpi=300, facecolor="white")

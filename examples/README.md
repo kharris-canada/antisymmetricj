@@ -66,3 +66,36 @@ PYTHONPATH=src .venv/bin/python examples/reproduce_figure2.py
 ```
 
 It writes the Figure 2 text tables and JPEGs into `examples/output/`.
+
+## Calculate a Fig. 3-Style Spectrum
+
+This calculates the AB spectrum directly from a default in-memory ZCW
+orientation set.  It does not write or reread an intermediate `f_zy`
+distribution.
+
+
+```bash
+PYTHONPATH=src .venv/bin/python -m antisymmetricj.cli calc_spectrum \
+  examples/output/spectrum_outfile.txt \
+  --sigma-i-hz 60 \
+  --sigma-s-hz 10 \
+  --j-iso-hz 50 \
+  --j-zy-anti-hz 100 \
+  --fwhm-hz 1.0 \
+  --plot_spectrum examples/output/spectrum.jpg
+```
+
+To use a saved orientation set instead, put the orientation file before the
+spectrum output file:
+
+```bash
+PYTHONPATH=src .venv/bin/python -m antisymmetricj.cli calc_spectrum \
+  examples/output/orientations_outfile.txt \
+  examples/output/spectrum_from_file.txt \
+  --sigma-i-hz 60 \
+  --sigma-s-hz 10 \
+  --j-iso-hz 50 \
+  --j-zy-anti-hz 100 \
+  --fwhm-hz 1\
+  --plot_spectrum examples/output/spectrum_from_file.jpg
+```

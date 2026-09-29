@@ -8,10 +8,14 @@ from antisymmetricj.orientations import (
     load_orientations,
     write_orientations,
 )
+from antisymmetricj.spectrum import Spectrum, Transitions, calculate_spectrum
 
 __all__ = [
     "Distribution",
     "OrientationSet",
+    "Spectrum",
+    "Transitions",
+    "calculate_spectrum",
     "f_zy",
     "generate_zcw",
     "load_orientations",

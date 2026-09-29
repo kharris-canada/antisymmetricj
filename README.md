@@ -1,8 +1,8 @@
 # AntisymmetricJ
 
 AntisymmetricJ is a small Python package for reproducing the `f_zy` powder
-population distributions from Harris, Bryce, and Wasylishen, Can. J. Chem. 87,
-1338-1351 (2009).
+population distributions and Fig. 3-style AB spectra from Harris, Bryce, and
+Wasylishen, Can. J. Chem. 87, 1338-1351 (2009).
 
 It keeps the original Mathematica/C-era geometry visible in the implementation:
 crystallite axes are rotated into the rotor frame, projected into the plane
@@ -48,6 +48,20 @@ Process an explicit orientation file:
 ```bash
 antisymmetricj calc_fzy orientations_infile.txt distribution_outfile.txt --c-yx 1 --c-zx 1
 ```
+
+Calculate a Gaussian-broadened AB spectrum directly from the default in-memory
+ZCW orientation set:
+
+```bash
+antisymmetricj calc_spectrum spectrum_outfile.txt \
+  --sigma-i-hz 60 \
+  --sigma-s-hz 10 \
+  --j-iso-hz 50 \
+  --j-zy-anti-hz 100 \
+  --fwhm-hz 1.0 \
+  --plot_spectrum spectrum.jpg
+```
+
 
 ## Examples
 
