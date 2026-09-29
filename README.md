@@ -4,7 +4,7 @@ AntisymmetricJ is a small Python package for reproducing the `f_zy` powder
 population distributions and Fig. 3-style AB spectra from Harris, Bryce, and
 Wasylishen, Can. J. Chem. 87, 1338-1351 (2009).
 
-It keeps the original Mathematica/C-era geometry visible in the implementation:
+Code follows the linear algebra setup of the original article:
 crystallite axes are rotated into the rotor frame, projected into the plane
 perpendicular to rotor-frame `z`, primed by a `-90 deg` rotation where equation
 (11) requires it, and then combined into `f_zy`.
