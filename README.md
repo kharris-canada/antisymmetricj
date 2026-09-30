@@ -1,8 +1,7 @@
 # AntisymmetricJ
 
-AntisymmetricJ is a small Python package for reproducing the `f_zy` powder
-population distributions and Fig. 3-style AB spectra from Harris, Bryce, and
-Wasylishen, Can. J. Chem. 87, 1338-1351 (2009).
+AntisymmetricJ is a small Python package for calculating NMR spectra from tightly-coupled AB spin systems under MAS *including* the effects of antisymmetric J-coupling tensors. For theory, see Harris, Bryce, and
+Wasylishen, Can. J. Chem. 87, 1338-1351 (2009). You can use this package to iteratively fit experimental spectra (I recommend double-quantum filtering to simplify the results).
 
 Code follows the linear algebra setup of the original article:
 crystallite axes are rotated into the rotor frame, projected into the plane
