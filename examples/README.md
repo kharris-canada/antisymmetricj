@@ -1,10 +1,7 @@
 # Examples
 
-These commands assume you are running from the repository root:
+These commands assume you are running from the repository root.
 
-```bash
-cd /Users/krisharris/Documents/AntisymmetricJ/Code/antisymmetricj
-```
 
 If the package has not been installed in editable mode, prefix the commands with
 `PYTHONPATH=src .venv/bin/python -m antisymmetricj.cli`. If it has been
